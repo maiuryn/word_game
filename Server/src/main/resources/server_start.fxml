@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: mistyrose;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ServerStartController">
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Server" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </Text>
+   </top>
+   <center>
+      <VBox fx:id="start_vbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: pink; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Port Number">
+                     <HBox.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="port_input_text" promptText="Type a port number..." style="-fx-background-color: white; -fx-border-color: gray; -fx-background-radius: 5; -fx-border-radius: 5;" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <Button fx:id="server_start_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startServer" style="-fx-background-color: white;" text="Start Server!" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Text fx:id="error_text" strokeType="OUTSIDE" strokeWidth="0.0" text="Error starting server, Try again!" visible="false" />
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>

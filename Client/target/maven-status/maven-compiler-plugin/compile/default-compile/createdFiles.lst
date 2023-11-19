@@ -1,6 +1,1 @@
-Server.class
-GuiServer.class
 Client.class
-GuiServer$1.class
-Server$ClientThread.class
-Server$TheServer.class

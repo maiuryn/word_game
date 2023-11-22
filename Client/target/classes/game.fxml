@@ -7,9 +7,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: mistyrose;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: mistyrose;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
    <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category" BorderPane.alignment="CENTER">
+      <Text fx:id="category_text" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -19,19 +19,19 @@
       </Text>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: pink; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: pink; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <HBox fx:fx:id="guess_box" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: palepink;">
+            <HBox fx:id="guess_box" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: palepink;">
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
                <children>
-                  <VBox alignment="CENTER" prefHeight="60.0" prefWidth="49.0" style="-fx-max-width: 48;">
+                  <VBox fx:id="guess_letter" alignment="CENTER" prefHeight="60.0" prefWidth="49.0" style="-fx-max-width: 48;" visible="false">
                      <children>
-                        <Text fx:fx:id="guess_char_1" strokeType="OUTSIDE" strokeWidth="0.0" text="A" visible="false">
+                        <Text fx:id="guess_char_1" strokeType="OUTSIDE" strokeWidth="0.0" text="A" visible="false">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -41,7 +41,7 @@
                   </VBox>
                </children>
             </HBox>
-            <GridPane alignment="CENTER" hgap="15.0" prefHeight="189.0" prefWidth="500.0">
+            <GridPane fx:id="letters_gp" alignment="CENTER" hgap="15.0" prefHeight="189.0" prefWidth="500.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -60,7 +60,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:fx:id="a_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="A" textAlignment="CENTER" GridPane.rowIndex="1">
+                  <Button fx:id="a_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#a_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="A" textAlignment="CENTER" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -68,7 +68,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="b_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="B" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="b_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#b_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="B" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -76,7 +76,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="c_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="C" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="c_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#c_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="C" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -84,7 +84,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="d_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="D" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <Button fx:id="d_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#d_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="D" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -92,7 +92,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="e_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="E" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                  <Button fx:id="e_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#e_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="E" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -100,7 +100,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="f_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="F" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                  <Button fx:id="f_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#f_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="F" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -108,7 +108,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="g_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="G" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                  <Button fx:id="g_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#g_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="G" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -116,7 +116,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="h_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="H" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                  <Button fx:id="h_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#h_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="H" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -124,7 +124,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="i_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="I" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                  <Button fx:id="i_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#i_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="I" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -132,7 +132,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="j_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="J" textAlignment="CENTER" GridPane.rowIndex="2">
+                  <Button fx:id="j_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#j_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="J" textAlignment="CENTER" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -140,7 +140,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="k_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="K" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="k_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#k_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="K" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -148,7 +148,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="l_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="L" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="l_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#l_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="L" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -156,7 +156,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="m_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="M" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <Button fx:id="m_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#m_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="M" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -164,7 +164,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="n_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="N" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <Button fx:id="n_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#n_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="N" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -172,7 +172,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="o_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="O" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                  <Button fx:id="o_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#o_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="O" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -180,7 +180,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="p_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="P" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                  <Button fx:id="p_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#p_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="P" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -188,7 +188,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="q_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="Q" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                  <Button fx:id="q_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#q_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="Q" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -196,7 +196,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="r_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="R" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                  <Button fx:id="r_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#r_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="R" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -204,7 +204,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="s_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="S" textAlignment="CENTER" GridPane.rowIndex="3">
+                  <Button fx:id="s_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#s_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="S" textAlignment="CENTER" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -212,7 +212,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="t_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="T" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button fx:id="t_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#t_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="T" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -220,7 +220,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="u_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="U" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="u_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#u_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="U" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -228,7 +228,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="v_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="V" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Button fx:id="v_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#v_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="V" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -236,7 +236,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="w_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="W" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                  <Button fx:id="w_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#w_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="W" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -244,7 +244,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="x_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="X" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#x_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="X" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3" fx:id="x_button">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -252,7 +252,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="y_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="Y" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                  <Button fx:id="y_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#y_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="Y" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -260,7 +260,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:fx:id="z_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="Z" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                  <Button fx:id="z_button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#z_button_press" style="-fx-background-color: #FFD4D1; -fx-border-color: white; -fx-border-radius: 5; -fx-min-width: 48;" text="Z" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                      </padding>
@@ -272,7 +272,7 @@
             </GridPane>
          </children>
          <padding>
-            <Insets bottom="50.0" left="25.0" right="25.0" top="50.0" />
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
       </VBox>
    </center>

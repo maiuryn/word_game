@@ -55,6 +55,13 @@ public class GuiServer extends Application{
 			logController.setStartPage(scene1);
 			logController.setStartController(startController);
 
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				@Override
+				public void handle(WindowEvent t) {
+					Platform.exit();
+					System.exit(0);
+				}
+			});
 			
 			primaryStage.setScene(scene1);
 			primaryStage.show();

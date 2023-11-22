@@ -40,12 +40,31 @@ public class GuiClient extends Application{
 		Parent menuRoot = menuLoader.load();
 		MenuController menuController = menuLoader.getController(); 
 		Scene menuScene = new Scene(menuRoot, 640, 480);
+
+		FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("/game.fxml"));
+		Parent gameRoot = gameLoader.load();
+		GameController gameController = gameLoader.getController(); 
+		Scene gameScene = new Scene(gameRoot, 640, 480);
 		
 		startController.setMenuController(menuController);
 		startController.setMenuPage(menuScene);
 
+		menuController.setGameController(gameController);
+		menuController.setGamePage(gameScene);
 
-		
+		gameController.setMenuController(menuController);
+		gameController.setMenuPage(menuScene);
+		gameController.setPrimaryStage(primaryStage);
+
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
+
 		primaryStage.setScene(startScene);
 		primaryStage.show();
 		

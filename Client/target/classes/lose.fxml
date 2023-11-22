@@ -19,11 +19,6 @@
                   <Font size="32.0" />
                </font>
             </Text>
-            <Button fx:id="lose_button" mnemonicParsing="false" style="-fx-background-color: white;" text="Play Again">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
          </children>
       </VBox>
    </center>
